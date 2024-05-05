@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">minang-kos-android</string>
+    <string name="app_title">minangkos</string>
+    <string name="slogan_1">#EnaknyaNgekos</string>
+    <string name="slogan_2">Cari &amp; Sewa Kos Mudah</string>
+    <string name="allow_notification">Yuk, Izinkan Notifikasi dari Minangkos</string>
+    <string name="allow_notification_body">Agar kamu selalu update dengan chat terbaru dari pemilik kos, info promo, dan lainnya.</string>
+    <string name="home">Home</string>
+    <string name="my_kos">Kos Saya</string>
+    <string name="chat">Chat</string>
+    <string name="login">Masuk</string>
+    <string name="search_kos">Mau cari kos dimana?</string>
+    <string name="allow_notification_btn">Izinkan Notifikasi</string>
 </resources>
