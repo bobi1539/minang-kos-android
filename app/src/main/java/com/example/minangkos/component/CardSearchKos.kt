@@ -28,7 +28,9 @@ fun CardSearchKos() {
             .fillMaxWidth()
             .height(70.dp)
             .padding(
-                top = 20.dp
+                top = 20.dp,
+                start = 15.dp,
+                end = 15.dp
             ),
         shape = RoundedCornerShape(5.dp),
         elevation = CardDefaults.cardElevation(5.dp),
