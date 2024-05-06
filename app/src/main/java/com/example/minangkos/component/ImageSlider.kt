@@ -58,7 +58,7 @@ fun ImageSlider() {
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(5.dp)),
+                    .clip(RoundedCornerShape(10.dp)),
                 painter = painterResource(id = images[currentPage]),
                 contentDescription = "",
                 contentScale = ContentScale.FillWidth

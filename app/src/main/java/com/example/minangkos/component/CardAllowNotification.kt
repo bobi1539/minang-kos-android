@@ -27,11 +27,11 @@ import com.example.minangkos.ui.theme.Primary
 fun CardAllowNotification() {
     Card(
         modifier = Modifier.padding(horizontal = 15.dp),
-        elevation = CardDefaults.cardElevation(5.dp),
+        elevation = CardDefaults.cardElevation(2.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        shape = RoundedCornerShape(5.dp)
+        shape = RoundedCornerShape(10.dp)
     ) {
         Row(
             modifier = Modifier.padding(10.dp)
