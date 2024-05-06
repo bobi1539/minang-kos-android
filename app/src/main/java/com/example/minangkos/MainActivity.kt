@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.example.minangkos.component.BottomNavigationBar
 import com.example.minangkos.component.CardAllowNotification
 import com.example.minangkos.component.CardSearchKos
+import com.example.minangkos.component.DropdownSimple
 import com.example.minangkos.component.ImageSlider
 import com.example.minangkos.component.TopBar
 import com.example.minangkos.ui.theme.MinangkosandroidTheme
@@ -43,10 +46,13 @@ fun Home(modifier: Modifier = Modifier) {
         topBar = { TopBar() },
         bottomBar = { BottomNavigationBar() }
     ) { contentPadding ->
+        val scrollState = rememberScrollState()
+
         Column(
             modifier
                 .padding(contentPadding)
                 .fillMaxSize()
+                .verticalScroll(scrollState)
         ) {
             Column(
                 modifier = Modifier.padding(horizontal = 15.dp)
@@ -66,9 +72,21 @@ fun Home(modifier: Modifier = Modifier) {
             }
             ImageSlider()
             CardAllowNotification()
+            DropdownSimple(
+                list = listOf(
+                    "Semua Kota",
+                    "Bukittinggi",
+                    "Padang",
+                    "Pekanbaru",
+                    "Medan",
+                    "Agam"
+                ),
+                true
+            )
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
