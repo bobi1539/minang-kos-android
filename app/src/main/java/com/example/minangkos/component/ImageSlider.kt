@@ -29,13 +29,13 @@ import com.example.minangkos.ui.theme.Primary
 import kotlinx.coroutines.delay
 
 val images = listOf(
-    R.drawable.cr1,
-    R.drawable.cr2,
     R.drawable.cr3,
+    R.drawable.cr7,
+    R.drawable.cr2,
     R.drawable.cr4,
     R.drawable.cr5,
     R.drawable.cr6,
-    R.drawable.cr7
+    R.drawable.cr1
 )
 
 @OptIn(ExperimentalFoundationApi::class)

@@ -24,9 +24,13 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
+import com.example.minangkos.Route
 import com.example.minangkos.ui.theme.Primary
 
 data class NavItemState(
+    val route : String,
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
@@ -36,6 +40,7 @@ data class NavItemState(
 
 val items = listOf(
     NavItemState(
+        route = Route.HOME,
         title = "Home",
         selectedIcon = Icons.Filled.Home,
         unselectedIcon = Icons.Outlined.Home,
@@ -43,6 +48,7 @@ val items = listOf(
         badgeNum = 0
     ),
     NavItemState(
+        route = Route.MY_KOS,
         title = "Kos Saya",
         selectedIcon = Icons.Filled.Info,
         unselectedIcon = Icons.Outlined.Info,
@@ -50,6 +56,7 @@ val items = listOf(
         badgeNum = 0
     ),
     NavItemState(
+        route = Route.CHAT,
         title = "Chat",
         selectedIcon = Icons.Filled.Email,
         unselectedIcon = Icons.Outlined.Email,
@@ -57,6 +64,7 @@ val items = listOf(
         badgeNum = 2
     ),
     NavItemState(
+        route = Route.LOGIN,
         title = "Masuk",
         selectedIcon = Icons.Filled.AccountCircle,
         unselectedIcon = Icons.Outlined.AccountCircle,
@@ -67,7 +75,7 @@ val items = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BottomNavigationBar() {
+fun BottomNavigationBar(navController: NavHostController) {
     var bottomNavState by rememberSaveable {
         mutableIntStateOf(0)
     }
@@ -78,7 +86,13 @@ fun BottomNavigationBar() {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
                 selected = bottomNavState == index,
-                onClick = { bottomNavState = index },
+                onClick = {
+                    navController.navigate(item.route) {
+                        popUpTo(navController.graph.findStartDestination().id)
+                        launchSingleTop = true
+                    }
+                    bottomNavState = index
+                },
                 icon = {
                     BadgedBox(badge = {
                         if (item.hasBadge) Badge {}

@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.minangkos.component.BottomNavigationBar
 import com.example.minangkos.component.CardAllowNotification
 import com.example.minangkos.component.CardKosBedroom
@@ -23,6 +24,7 @@ import com.example.minangkos.component.DropdownSimple
 import com.example.minangkos.component.HomeSlogan
 import com.example.minangkos.component.ImageSlider
 import com.example.minangkos.component.TopBar
+import com.example.minangkos.graph.RootNavigationGraph
 import com.example.minangkos.ui.theme.MinangkosandroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +32,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MinangkosandroidTheme {
-                Home()
+                RootNavigationGraph(navHostController = rememberNavController())
             }
         }
     }
@@ -42,7 +44,7 @@ fun Home(modifier: Modifier = Modifier) {
     Scaffold(
         containerColor = Color.White,
         topBar = { TopBar() },
-        bottomBar = { BottomNavigationBar() }
+        bottomBar = { BottomNavigationBar(rememberNavController()) }
     ) { contentPadding ->
         val scrollState = rememberScrollState()
 
