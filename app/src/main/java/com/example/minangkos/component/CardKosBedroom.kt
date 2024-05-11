@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.DateRange
 import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,7 +33,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.minangkos.R
+import com.example.minangkos.constant.Route
 import com.example.minangkos.ui.theme.Primary
 import com.example.minangkos.util.ElipsisString
 import com.example.minangkos.util.StringThousandSeparator
@@ -49,7 +52,7 @@ data class KosBedroom(
 )
 
 @Composable
-fun CardKosBedroom() {
+fun CardKosBedroom(rootNavController: NavHostController) {
     val bedrooms = listOf(
         KosBedroom(
             image = R.drawable.bed1,
@@ -109,13 +112,22 @@ fun CardKosBedroom() {
     LazyRow {
         itemsIndexed(items = bedrooms) { index, item ->
             isLastItem.value = index == bedrooms.size - 1
-            RowItem(kosBedroom = item, isLastItem = isLastItem.value)
+            RowItem(
+                kosBedroom = item,
+                isLastItem = isLastItem.value,
+                rootNavController = rootNavController
+            )
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RowItem(kosBedroom: KosBedroom, isLastItem: Boolean) {
+fun RowItem(
+    kosBedroom: KosBedroom,
+    isLastItem: Boolean,
+    rootNavController: NavHostController,
+) {
     Card(
         modifier = Modifier
             .padding(
@@ -127,7 +139,10 @@ fun RowItem(kosBedroom: KosBedroom, isLastItem: Boolean) {
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        border = BorderStroke(width = 1.dp, color = Color.LightGray)
+        border = BorderStroke(width = 1.dp, color = Color.LightGray),
+        onClick = {
+            rootNavController.navigate(route = Route.DETAIL_KOS)
+        }
     ) {
         Column {
             RowImageBedroom(image = kosBedroom.image)
@@ -262,7 +277,7 @@ fun RowPromo(promo: String) {
 
 @Composable
 fun RowPrice(price: Float) {
-    Row (
+    Row(
         modifier = Modifier.padding(start = 10.dp, top = 10.dp)
     ) {
         Text(

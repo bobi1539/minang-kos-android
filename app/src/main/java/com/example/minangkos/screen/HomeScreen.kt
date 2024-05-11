@@ -1,4 +1,4 @@
-package com.example.minangkos.graph.screen.main
+package com.example.minangkos.screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,6 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import com.example.minangkos.component.CardAllowNotification
 import com.example.minangkos.component.CardKosBedroom
 import com.example.minangkos.component.CardLoginKosOwner
@@ -17,10 +18,13 @@ import com.example.minangkos.component.HomeSlogan
 import com.example.minangkos.component.ImageSlider
 
 @Composable
-fun HomeScreen(contentPadding: PaddingValues) {
+fun HomeScreen(
+    padding: PaddingValues,
+    rootNavController: NavHostController,
+) {
     Column(
         modifier = Modifier
-            .padding(contentPadding)
+            .padding(padding)
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
@@ -40,6 +44,6 @@ fun HomeScreen(contentPadding: PaddingValues) {
             ),
             true
         )
-        CardKosBedroom()
+        CardKosBedroom(rootNavController = rootNavController)
     }
 }

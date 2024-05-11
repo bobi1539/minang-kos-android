@@ -26,7 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.minangkos.Route
+import com.example.minangkos.constant.Route
 import com.example.minangkos.ui.theme.Primary
 
 data class NavItemState(
